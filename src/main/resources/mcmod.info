@@ -1,0 +1,21 @@
+{
+    "modListVersion": 2,
+    "modList": [{
+        "modid": "tfcprimitivetechplus",
+        "name": "TFC+ Primitive Technology Plus",
+        "description": "This is a port for TFC+. All rights go to Wahazar and aleksey. This mod adds Slinghot and advanced leather and paper processing for use with TerraFirmaCraft.",
+        "version": "0.1",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": ["lfaoanl", "Wahazar", "aleksey"],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [],
+        "parent": "",
+        "requiredMods": [  ],
+        "dependencies": [  ],
+        "dependants": [  ],
+        "useDependencyInformation": "true"
+    }]
+}
