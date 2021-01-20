@@ -69,10 +69,10 @@ soft stone (from any sedimentary rock) - no damage bonus, decreased force.
 
 There is option to disable slingshots.
 
-Slingshot is made from wooden twig and leather belt. Leather belt is made by carving horizontal stripe from leather (up to 3 belts from one leather):
+Slingshot is made from wooden twig and leather belt. Leather belt is made by carving horizontal stripe from leather (up to 3 belts from one leather):  
 ![](images/recipe-belt.png)
 
-One rock can be knapped into 4 stones:
+One rock can be knapped into 4 stones:  
 ![](images/recipe-stone.png)
 
 
