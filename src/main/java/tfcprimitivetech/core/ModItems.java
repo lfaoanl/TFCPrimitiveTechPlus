@@ -5,7 +5,6 @@ import com.dunk.tfc.Items.ItemTerra;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import tfcprimitivetech.items.ItemWoodenTwig;
-import tfcprimitivetech.items.PowderAsh;
 import tfcprimitivetech.items.WoodenBucket_BasePotashLiquor;
 import tfcprimitivetech.TFCPrimitiveTech;
 import tfcprimitivetech.items.ItemCelluloseFibers;
@@ -23,7 +22,6 @@ public class ModItems
 {
 	// Items
 	public static Item itemWoodenTwig;
-	public static Item powderAsh;
 	public static Item woodenBucket_BasePotashLiquor;
 	public static Item itemCelluloseFibers;
 	public static Item itemWoodenPress;
@@ -41,7 +39,6 @@ public class ModItems
 		System.out.println("[" + ModDetails.ModName + "] Registering Items");
 		
 		itemWoodenTwig = new ItemWoodenTwig();
-		powderAsh = new PowderAsh();
 		woodenBucket_BasePotashLiquor = new WoodenBucket_BasePotashLiquor();
         if (TFCPrimitiveTech.instance.isPaperEnabled)
         {
@@ -59,8 +56,7 @@ public class ModItems
         	itemSlingshot = new ItemSlingshot();
         }
 
-//		itemSack = new ItemSack();
-		
+
 		registerItems();
 		        
 		System.out.println("[" + ModDetails.ModName + "] Done Registering Items");
@@ -69,7 +65,6 @@ public class ModItems
 	private static void registerItems()
 	{
 	  GameRegistry.registerItem(itemWoodenTwig, "itemWoodenTwig");
-	  GameRegistry.registerItem(powderAsh, "powderAsh");
 	  GameRegistry.registerItem(woodenBucket_BasePotashLiquor, "woodenBucket_BasePotashLiquor");
       if (TFCPrimitiveTech.instance.isPaperEnabled)
       { 

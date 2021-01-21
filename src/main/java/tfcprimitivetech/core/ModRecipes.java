@@ -75,8 +75,9 @@ public class ModRecipes
 	}
 
 	public static void RegisterItemHeat(){
-        HeatRegistry heatRegistry = HeatRegistry.getInstance();		
-		heatRegistry.addIndex( new HeatIndex( new ItemStack( ModItems.itemWoodenTwig, 1 ), 0.7f, 500f, new ItemStack( ModItems.powderAsh, 1 ) ) );
+        HeatRegistry heatRegistry = HeatRegistry.getInstance();
+		ItemStack ash = new ItemStack(TFCItems.powder, 1, 13);
+		heatRegistry.addIndex( new HeatIndex( new ItemStack( ModItems.itemWoodenTwig, 1 ), 0.7f, 500f, ash) );
 	}
 
     public static boolean areAnvilRecipesInitialised() 
@@ -103,7 +104,7 @@ public class ModRecipes
 
     private static void registerBarrelRecipes()
     {
-        BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(ModItems.powderAsh, 1, 0), new FluidStack(TFCFluids.FRESHWATER, 500), null, new FluidStack(FluidList.BasePotashLiquor, 500), 8).setMinTechLevel(0).setSealedRecipe(true).setRemovesLiquid(false).setAllowAnyStack(false));
+        BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCItems.powder, 5, 13) , new FluidStack(TFCFluids.FRESHWATER, 500), null, new FluidStack(FluidList.BasePotashLiquor, 500), 8).setMinTechLevel(0).setSealedRecipe(true).setRemovesLiquid(false).setAllowAnyStack(false));
         BarrelManager.getInstance().addRecipe(new BarrelRecipe(new ItemStack(TFCItems.reeds, 1, 0), new FluidStack(FluidList.BasePotashLiquor, 156), new ItemStack(ModItems.itemCelluloseFibers, 1, 0), new FluidStack(FluidList.Waste, 156), 24).setMinTechLevel(0).setSealedRecipe(true).setRemovesLiquid(false).setAllowAnyStack(false));
         
         BarrelManager.getInstance().addRecipe(new BarrelMultiItemRecipe(new ItemStack(TFCItems.hide, 1, 0), new FluidStack(FluidList.BasePotashLiquor, 300), new ItemStack(TFCItems.soakedHide, 1, 0), new FluidStack(FluidList.Waste, 300)).setMinTechLevel(0));
