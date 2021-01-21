@@ -104,7 +104,7 @@ public class BlockWoodenPressWet extends BlockTerraContainer
     @Override
     public void registerBlockIcons(IIconRegister register)
     {
-        String baseName = "tfcprimitivetech:";
+        String baseName = "tfcprimitivetechplus:";
         
         _topIcon = register.registerIcon(baseName + "blockWoodenPressTop");
         _sideIconWet = register.registerIcon(baseName + "blockWoodenPressSide1");
