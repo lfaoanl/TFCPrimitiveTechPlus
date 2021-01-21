@@ -24,7 +24,7 @@ When broken will drop your woodenpress and your newly created paper!
 
 Recipes  
 ![](images/recipe-wetwoodenpress.png)
-![](images/recipe-woodenpress.png)
+![](images/recipe-woodenpress.png)  
 ![](images/woodenpress.jpg)
 
 Left and center - dried, right: wet paper press, it works similar to mud brick from TFC Decorations mod (I borrowed some java code from this mod).
@@ -41,13 +41,13 @@ The slingshot uses the following types of ammunition:
 * Hard stone (from any ingenous rock) - crushing damage
 * Sharp stone (from any metamorfic rock) - slashing damage
 * Soft stone (from any sedimentary rock) - no damage bonus, decreased force.  
-![](images/slingshot-distance.png)
+![](images/slingshot-distance.png)  
 *Furthest is the Hard Stone, than Sharp Stone, than Soft Stone*  
 
 There is an option to disable the slingshot.
 
 Leather belt is made by carving horizontal stripe from leather (up to 3 belts from one leather)  
-Slingshot is made from wooden twig and leather belt
+Slingshot is made from wooden twig and leather belt  
 ![](images/recipe-belt.png)
 ![](images/recipe-slingshot.png)
 
