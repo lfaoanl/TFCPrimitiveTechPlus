@@ -1,6 +1,6 @@
 # Changelog
 
-##0.2
+## 0.2
 * Tweaked slingshot power
 * Changed recipes
   * Wooden press
