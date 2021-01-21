@@ -17,6 +17,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import tfcprimitivetech.core.ModBlocks;
+import tfcprimitivetech.core.ModDetails;
 import tfcprimitivetech.core.ModItems;
 import tfcprimitivetech.render.RenderWoodenPress;
 import tfcprimitivetech.tileentities.TileEntityWoodenPressWet;
@@ -52,12 +53,14 @@ public class BlockWoodenPressWet extends BlockTerraContainer
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-        ArrayList<ItemStack> drops_dry = new ArrayList<ItemStack>();
-        ArrayList<ItemStack> drops_wet = new ArrayList<ItemStack>();        
-        drops_wet.add(new ItemStack(ModItems.itemCelluloseFibers, 2));        
+        ArrayList<ItemStack> drops_wet = new ArrayList<ItemStack>();
+        drops_wet.add(new ItemStack(ModItems.itemCelluloseFibers, 2));
         drops_wet.add(new ItemStack(ModItems.itemWoodenPress, 2));
-        drops_dry.add(new ItemStack(Items.paper, world.rand.nextInt(2) + 1));        
+
+        ArrayList<ItemStack> drops_dry = new ArrayList<ItemStack>();
+        drops_dry.add(new ItemStack(Items.paper, world.rand.nextInt(2) + 1));
         drops_dry.add(new ItemStack(ModItems.itemWoodenPress, 2 - world.rand.nextInt(20)/20));
+
         return metadata == 0 ? drops_wet : drops_dry;
         		
     }    
@@ -104,7 +107,7 @@ public class BlockWoodenPressWet extends BlockTerraContainer
     @Override
     public void registerBlockIcons(IIconRegister register)
     {
-        String baseName = "tfcprimitivetechplus:";
+        String baseName = ModDetails.ModID +  ":";
         
         _topIcon = register.registerIcon(baseName + "blockWoodenPressTop");
         _sideIconWet = register.registerIcon(baseName + "blockWoodenPressSide1");

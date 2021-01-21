@@ -7,6 +7,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -33,7 +35,7 @@ import com.dunk.tfc.api.Interfaces.ISize;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSlingshot extends ItemBow implements ISize
+public class ItemSlingshot extends Item implements ISize
 {
 	private String[] slingshotPullIconNameArray = new String[] {"pull_0", "pull_1", "pull_2", "pull_3"};
 	private IIcon[] iconArray;
@@ -43,7 +45,6 @@ public class ItemSlingshot extends ItemBow implements ISize
 
 	public ItemSlingshot()
 	{
-		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(SlingshotDurability);
 		setCreativeTab(TFCTabs.TFC_WEAPONS);
@@ -89,11 +90,11 @@ public class ItemSlingshot extends ItemBow implements ISize
 				return;
 
 			if (forceMult > 1.25F)
-				forceMult = 1.25F;
+				forceMult = 1.0F;
 
-			EntityProjectileSharpStone entitysharpstone = new EntityProjectileSharpStone(world, player, forceMult * 1.2F);
-			EntityProjectileHardStone entityhardstone = new EntityProjectileHardStone(world, player, forceMult * 1.5F);
-			EntityProjectileSoftStone entitysoftstone = new EntityProjectileSoftStone(world, player, forceMult * 0.8F);
+			EntityProjectileSharpStone entitysharpstone = new EntityProjectileSharpStone(world, player, forceMult * 1.5F);
+			EntityProjectileHardStone entityhardstone = new EntityProjectileHardStone(world, player, forceMult * 1.75F);
+			EntityProjectileSoftStone entitysoftstone = new EntityProjectileSoftStone(world, player, forceMult * 1.25F);
 
 			entitysharpstone.setDamage(forceMult * 40.0);
 			entityhardstone.setDamage(forceMult * 50.0);
@@ -188,7 +189,6 @@ public class ItemSlingshot extends ItemBow implements ISize
 
 	}
 
-	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getItemIconForUseDuration(int par1)
 	{
@@ -221,6 +221,36 @@ public class ItemSlingshot extends ItemBow implements ISize
             }
         }
         return getIcon(stack, renderPass);
+	}
+
+	public ItemStack onEaten(ItemStack itemStack, World p_77654_2_, EntityPlayer p_77654_3_)
+	{
+		return itemStack;
+	}
+
+	/**
+	 * How long it takes to use or consume an item
+	 */
+	public int getMaxItemUseDuration(ItemStack p_77626_1_)
+	{
+		return 72000;
+	}
+
+	/**
+	 * returns the action that specifies what animation to play when the items is being used
+	 */
+	public EnumAction getItemUseAction(ItemStack p_77661_1_)
+	{
+		return EnumAction.bow;
+	}
+
+
+	/**
+	 * Return the enchantability factor of the item, most of the time is based on material.
+	 */
+	public int getItemEnchantability()
+	{
+		return 1;
 	}
 
 	@Override
