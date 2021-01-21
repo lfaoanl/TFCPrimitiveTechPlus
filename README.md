@@ -40,7 +40,9 @@ This mod offers a primitive ranged weapon: the slingshot
 The slingshot uses the following types of ammunition:
 * Hard stone (from any ingenous rock) - crushing damage
 * Sharp stone (from any metamorfic rock) - slashing damage
-* Soft stone (from any sedimentary rock) - no damage bonus, decreased force.
+* Soft stone (from any sedimentary rock) - no damage bonus, decreased force.  
+![](images/slingshot-distance.png)
+*Furthest is the Hard Stone, than Sharp Stone, than Soft Stone*  
 
 There is an option to disable the slingshot.
 
