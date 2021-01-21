@@ -1,5 +1,6 @@
 package tfcprimitivetech.core;
 
+import com.dunk.tfc.Core.Recipes;
 import com.dunk.tfc.api.Constant.Global;
 import com.dunk.tfc.api.Crafting.BarrelManager;
 import com.dunk.tfc.api.Crafting.BarrelMultiItemRecipe;
@@ -71,27 +72,6 @@ public class ModRecipes {
 
     }
 
-    private static void RemoveRecipe(ItemStack resultItem) {
-        List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
-        for (int i = 0; i < recipes.size(); i++) {
-            IRecipe tmpRecipe = recipes.get(i);
-            ItemStack recipeResult = null;
-            if (tmpRecipe instanceof ShapedRecipes) {
-                ShapedRecipes recipe = (ShapedRecipes) tmpRecipe;
-                recipeResult = recipe.getRecipeOutput();
-            } else if (tmpRecipe instanceof ShapedOreRecipe) {
-                ShapedOreRecipe recipe = (ShapedOreRecipe) tmpRecipe;
-                recipeResult = recipe.getRecipeOutput();
-            } else if (tmpRecipe instanceof ShapelessOreRecipe) {
-                ShapelessOreRecipe recipe = (ShapelessOreRecipe) tmpRecipe;
-                recipeResult = recipe.getRecipeOutput();
-            }
-            if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) {
-                recipes.remove(i--);
-            }
-        }
-    }
-
     private static void registerRecipes() {
         // log + hammer = twig
         GameRegistry.addRecipe(new ShapelessOreRecipe(
@@ -140,9 +120,6 @@ public class ModRecipes {
         }
 
         GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemWoodenClub, 1, 0), new Object[]{new ItemStack(Items.flint, 1, 0), new ItemStack(Items.flint, 1, 0), new ItemStack(Items.flint, 1, 0), new ItemStack(TFCItems.logs, 1, -1)});
-
-        if (TFCPrimitiveTech.instance.isPaperEnabled)
-            RemoveRecipe(new ItemStack(Items.paper, 3));
 
     }
 }

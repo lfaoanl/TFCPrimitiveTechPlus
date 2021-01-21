@@ -1,5 +1,6 @@
 package tfcprimitivetech;
 
+import com.dunk.tfc.Core.Recipes;
 import com.dunk.tfc.TerraFirmaCraft;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -9,7 +10,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import tfcprimitivetech.core.*;
@@ -97,5 +100,8 @@ public class TFCPrimitiveTech {
 
     @EventHandler
     public void postInitialize(FMLPostInitializationEvent e) {
+        if (TFCPrimitiveTech.instance.isPaperEnabled) {
+            Recipes.removeRecipe(new ItemStack(Items.paper, 3));
+        }
     }
 }

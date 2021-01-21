@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.1
+* Removed vanilla paper recipe
+
 ## 0.2
 * Tweaked slingshot power
 * Changed recipes
