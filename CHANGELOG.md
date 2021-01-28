@@ -2,11 +2,9 @@
 
 ## 0.3
 * New way to obtain the Paper Wooden Press
-* Replaced Paper Wooden Press item with a block
+* Replaced Wooden Press item with a block
   * Place the block with Cellulose Fibers in your world to get the Paper Press
-* Old Wooden Press is still in the game, you can convert it to the new block in the crafting table
-  * Will be removed in the future
-
+* Old Wooden Press is still in the game, you can convert it to the new block in the crafting table (will be removed in the future)
 ## 0.2.1
 * Removed vanilla paper recipe
 
