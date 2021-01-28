@@ -6,8 +6,8 @@ public class ModDetails
 	public static final String ModName = "TFCPrimitiveTechPlus";
 
 	public static final int VersionMajor = 0;
-	public static final int VersionMinor = 2;
-	public static final int VersionRevision = 1;
+	public static final int VersionMinor = 3;
+	public static final int VersionRevision = 0;
 
 	public static final String ModVersion = VersionMajor + "." + VersionMinor + "." + VersionRevision;
 	public static final String ModDependencies = "after:TerraFirmaCraft";

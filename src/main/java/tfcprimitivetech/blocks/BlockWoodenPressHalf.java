@@ -1,17 +1,19 @@
 package tfcprimitivetech.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import com.dunk.tfc.Blocks.BlockTerraContainer;
+import com.dunk.tfc.Core.TFCTabs;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
@@ -22,54 +24,46 @@ import tfcprimitivetech.core.ModItems;
 import tfcprimitivetech.render.RenderWoodenPress;
 import tfcprimitivetech.render.RenderWoodenPressHalf;
 import tfcprimitivetech.tileentities.TileEntityWoodenPressWet;
-import com.dunk.tfc.Blocks.BlockTerraContainer;
-import com.dunk.tfc.Core.TFCTabs;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockWoodenPressWet extends BlockTerraContainer
+import java.util.ArrayList;
+import java.util.List;
+
+public class BlockWoodenPressHalf extends BlockTerraContainer
 {
     @SideOnly(Side.CLIENT)
-    private IIcon _sideIconWet;
-
-    @SideOnly(Side.CLIENT)
-    private IIcon _sideIconDry;
-
-    @SideOnly(Side.CLIENT)
     private IIcon _topIcon;
-    
-    protected static int WoodenPress_ColorWet = 0xACADAF;
-    protected static int WoodenPress_ColorDry = 0xAA9C88;
-       
-    public BlockWoodenPressWet()
+
+    @SideOnly(Side.CLIENT)
+    private IIcon _sideIcon;
+
+    @SideOnly(Side.CLIENT)
+    private IIcon _sideIconPulp;
+
+
+    @SideOnly(Side.CLIENT)
+    private IIcon _topIconPulp;
+
+    public BlockWoodenPressHalf()
     {
         super(Material.wood);
         
         this.setHardness(0.3f);
         this.setResistance(10.0f);
         this.setCreativeTab(TFCTabs.TFC_TOOLS);
-        this.setBlockBounds((float)RenderWoodenPress.VoxelSizeScaled, 0, (float)RenderWoodenPress.VoxelSizeScaled, 1 - (float)RenderWoodenPress.VoxelSizeScaled, 8 * (float)RenderWoodenPress.VoxelSizeScaled, 1 - (float)RenderWoodenPress.VoxelSizeScaled);
 
-        // TODO replace above
-//        float[] bounds = RenderWoodenPress.bounds;
-//        this.setBlockBounds(bounds[0], bounds[1], bounds[2], bounds[3], bounds[4], bounds[5]);
+        float[] bounds = RenderWoodenPressHalf.bounds;
+        this.setBlockBounds(bounds[0], bounds[1], bounds[2], bounds[3], bounds[4], bounds[5]);
+        
     }
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
 
-        if (metadata == 0) {
-            drops.add(new ItemStack(ModItems.itemCelluloseFibers, 2));
-            drops.add(new ItemStack(ModBlocks.woodenPressHalf, 2, 0));
-        } else {
-            int amount = 2;
-            if (world.rand.nextInt(100) < 40) {
-                amount = 1;
-            }
+        drops.add(new ItemStack(ModBlocks.woodenPressHalf, 1, 0));
 
-            drops.add(new ItemStack(Items.paper, world.rand.nextInt(2) + 1));
-            drops.add(new ItemStack(ModBlocks.woodenPressHalf, amount, 0));
+        if (hasPaper(metadata)) {
+            drops.add(new ItemStack(ModItems.itemCelluloseFibers, 2, 0));
         }
 
         return drops;
@@ -81,7 +75,7 @@ public class BlockWoodenPressWet extends BlockTerraContainer
     @Override
     public int getRenderColor(int meta)
     {
-        return meta == 0 ? WoodenPress_ColorWet: WoodenPress_ColorDry;
+        return hasPaper(meta) ? BlockWoodenPressWet.WoodenPress_ColorWet : BlockWoodenPressWet.WoodenPress_ColorDry;
     }
     
     @SideOnly(Side.CLIENT)
@@ -111,17 +105,30 @@ public class BlockWoodenPressWet extends BlockTerraContainer
     @Override
     public IIcon getIcon(int side, int metadata)
     {
-        return side <= 1 ? _topIcon: (metadata == 0 ?_sideIconWet : _sideIconDry);
+        IIcon icon;
+        switch (side) {
+            case 0:
+                icon = _topIcon;
+                break;
+            case 1:
+                icon = hasPaper(metadata) ? _topIconPulp : _topIcon;
+                break;
+            default:
+                icon = hasPaper(metadata) ? _sideIconPulp : _sideIcon;
+                break;
+        }
+        return icon;
     }
 
     @Override
     public void registerBlockIcons(IIconRegister register)
     {
         String baseName = ModDetails.ModID +  ":";
-        
+
         _topIcon = register.registerIcon(baseName + "blockWoodenPressTop");
-        _sideIconWet = register.registerIcon(baseName + "blockWoodenPressSide1");
-        _sideIconDry = register.registerIcon(baseName + "blockWoodenPressPaper");        
+        _sideIcon = register.registerIcon(baseName + "blockWoodenPressSideHalf");
+        _topIconPulp = register.registerIcon(baseName + "blockWoodenPressTopPulp");
+        _sideIconPulp = register.registerIcon(baseName + "blockWoodenPressSidePulp");
     }
     
     @Override
@@ -157,15 +164,20 @@ public class BlockWoodenPressWet extends BlockTerraContainer
         return true;
     }
 
+
+    private boolean hasPaper(int meta) {
+        return meta == 1;
+    }
+
     @Override
     public int getRenderType()
     {
-        return ModBlocks.WoodenPressRenderId;
+        return ModBlocks.halfWoodenPressRenderId;
     }
-    
-    @Override
-    public TileEntity createNewTileEntity(World world, int metadata)
-    {
-        return metadata == 0 ? new TileEntityWoodenPressWet(): null;
+
+
+    private boolean canUse(EntityPlayer player, Item item, int amount) {
+        ItemStack itemInUse = player.getHeldItem();
+        return player.isSneaking() && itemInUse.getItem() == item && itemInUse.stackSize >= amount;
     }
 }

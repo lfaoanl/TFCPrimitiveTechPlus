@@ -82,44 +82,44 @@ public class ModRecipes {
         // twig + knife = 2 stick
         GameRegistry.addRecipe(new ShapelessOreRecipe(
                 new ItemStack(TFCItems.stick, 1, 0),
-                new Object[]{ new ItemStack(ModItems.itemWoodenTwig, 1, 0), "itemKnife"}
-                ));
+                new ItemStack(ModItems.itemWoodenTwig, 1, 0), "itemKnife"));
 
         if (TFCPrimitiveTech.instance.isPaperEnabled) {
             // fibre + press = wet paper press
-            GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.WoodenPressWet, 1, 0), new Object[]{new ItemStack(ModItems.itemWoodenPress, 1, 0), new ItemStack(ModItems.itemCelluloseFibers, 1, 0), new ItemStack(ModItems.itemCelluloseFibers, 1, 0), new ItemStack(ModItems.itemWoodenPress, 1, 0)});
+//            GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.WoodenPressWet, 1, 0), new Object[]{new ItemStack(ModItems.itemWoodenPress, 1, 0), new ItemStack(ModItems.itemCelluloseFibers, 1, 0), new ItemStack(ModItems.itemCelluloseFibers, 1, 0), new ItemStack(ModItems.itemWoodenPress, 1, 0)});
+            GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.woodenPressHalf, 1, 0), ModItems.itemWoodenPress);
 
             // 2 woodLumber = woodenpress
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.itemWoodenPress, 1, 0), new Object[]{"##", '#', "woodLumber"}));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.woodenPressHalf, 1, 0), "##", '#', "woodLumber"));
         }
 
         if (TFCPrimitiveTech.instance.isSlingshotEnabled) {
             // twig + leather belt = slingshot
 //            GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemSlingshot, 1, 0), new Object[]{ ModItems.itemWoodenTwig, ModItems.itemLeatherBelt });
-            GameRegistry.addShapedRecipe(new ItemStack(ModItems.itemSlingshot, 1, 0),  new Object[] { "y]", 'y', ModItems.itemWoodenTwig, ']', ModItems.itemLeatherBelt});
+            GameRegistry.addShapedRecipe(new ItemStack(ModItems.itemSlingshot, 1, 0), "y]", 'y', ModItems.itemWoodenTwig, ']', ModItems.itemLeatherBelt);
         }
 
-        CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ModItems.itemLeatherBelt, 1), new Object[]{"#####", Character.valueOf('#'), TFCItems.flatLeather});
+        CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ModItems.itemLeatherBelt, 1), new Object[]{"#####", '#', TFCItems.flatLeather});
         CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ModItems.itemLeatherBelt, 3), new Object[]{"#####", "     ", "#####", "     ", "#####", Character.valueOf('#'), TFCItems.flatLeather});
 
         for (int i = 0; i < Global.STONE_IGIN.length; i++) {
             CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ModItems.itemHardStone, 4), new Object[]
-                    {"## ##", "## ##", "     ", "## ##", "## ##", Character.valueOf('#'), new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_IGIN_START)});
+                    {"## ##", "## ##", "     ", "## ##", "## ##", '#', new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_IGIN_START)});
         }
         for (int i = 0; i < Global.STONE_IGEX.length; i++) {
             CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ModItems.itemHardStone, 4), new Object[]
-                    {"## ##", "## ##", "     ", "## ##", "## ##", Character.valueOf('#'), new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_IGEX_START)});
+                    {"## ##", "## ##", "     ", "## ##", "## ##", '#', new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_IGEX_START)});
         }
         for (int i = 0; i < Global.STONE_MM.length; i++) {
             CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ModItems.itemSharpStone, 4), new Object[]
-                    {"## ##", "## ##", "     ", "## ##", "## ##", Character.valueOf('#'), new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_MM_START)});
+                    {"## ##", "## ##", "     ", "## ##", "## ##", '#', new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_MM_START)});
         }
         for (int i = 0; i < Global.STONE_SED.length; i++) {
             CraftingManagerTFC.getInstance().addRecipe(new ItemStack(ModItems.itemSoftStone, 4), new Object[]
-                    {"## ##", "## ##", "     ", "## ##", "## ##", Character.valueOf('#'), new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_SED_START)});
+                    {"## ##", "## ##", "     ", "## ##", "## ##", '#', new ItemStack(TFCItems.flatRock, 1, i + Global.STONE_SED_START)});
         }
 
-        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemWoodenClub, 1, 0), new Object[]{new ItemStack(Items.flint, 1, 0), new ItemStack(Items.flint, 1, 0), new ItemStack(Items.flint, 1, 0), new ItemStack(TFCItems.logs, 1, -1)});
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemWoodenClub, 1, 0), new ItemStack(Items.flint, 1, 0), new ItemStack(Items.flint, 1, 0), new ItemStack(Items.flint, 1, 0), new ItemStack(TFCItems.logs, 1, -1));
 
     }
 }

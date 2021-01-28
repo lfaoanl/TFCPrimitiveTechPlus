@@ -14,18 +14,15 @@
 #= Items =
 #=========
 item.ItemWoodenTwig.name=Wooden Twig
-item.PowderAsh.name=Firepit Ash
-item.WoodenBucket_BasePotashLiquor.name=Bucket of Base Potash Liquor
-item.ItemCelluloseFibers.name=Cellulose Fibers
-item.ItemWoodenPress.name=Wooden Press
 item.ItemLeatherBelt.name=Leather Belt
 item.ItemSlingshot.name=Slingshot
 item.ItemHardStone.name=Small hard stone
 item.ItemSharpStone.name=Small sharp stone
 item.ItemSoftStone.name=Small soft stone
 item.ItemWoodenClub.name=Wooden Club
-item.Brick.Clay Brick.name=Clay Brick
-item.Brick.Ceramic Brick.name=Brick
+
+item.ItemCelluloseFibers.name=Cellulose Fibers
+item.ItemWoodenPress.name=Wooden Press
 
 #=======
 #= GUI =
@@ -40,10 +37,11 @@ item.Brick.Ceramic Brick.name=Brick
 #========
 #= Misc =
 #========
-fluid.basePotashLiquor=Base Potash Liquor
-fluid.waste=Waste
-tile.WoodenPressWet.Wet.name=Paper Wooden Press (Wet)
-tile.WoodenPressWet.Dry.name=Paper Wooden Press (Dry)
+tile.WoodenPressWet.Wet.name=Wet Paper Wooden Press
+tile.WoodenPressWet.Dry.name=Paper Wooden Press
+tile.WoodenPressHalf.name=Wooden Press
+tile.WoodenPressHalfPaper.name=Covered Wooden Press
+
 #== Creative Tabs ==
 
 
